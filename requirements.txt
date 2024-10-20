@@ -1,0 +1,10 @@
+
+streamlit == 1.39.0
+pandas == 2.2.2
+numpy == 1.26.4
+matplotlib.pyplot == 3.9.2
+seaborn == 0.13.2
+sklearn == 1.5.1
+hiplot == 0.1.33
+imblearn == 0.12.3
+plotly == 5.24.1
