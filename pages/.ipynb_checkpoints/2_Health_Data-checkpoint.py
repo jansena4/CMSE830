@@ -15,10 +15,10 @@ from sklearn.impute import IterativeImputer, SimpleImputer
 from sklearn.preprocessing import StandardScaler, RobustScaler
 
 
-st.set_page_config(page_title="Data Science: Health Data")
+st.set_page_config(page_title="Health Data")
 
-st.markdown("# Data Science: Health Data")
-st.sidebar.header("Data Science: Health Data")
+st.markdown("# Health Data")
+st.sidebar.header("Health Data")
 st.write(
     """
     This dataset was found in kaggle here: https://www.kaggle.com/datasets/hanaksoy/health-and-sleep-statistics
