@@ -7,7 +7,7 @@ There are several ideas for what to check:
 - The relationships between physical activity levels, sleep, and overall health. Potentially comparing measures of general health against physical activity measure and sleep duration/quality to determine which measure is more predictive of health levels.
 - General trends among these factors (age, gender, bmi level, etc.) and activity level. This would be an interesting way to see whetehr the stereotype of "gym bros" working out more/being healthier than the general population seems to be true.
 - 
-The streamlit app can be found here: ...
+The streamlit app can be found here: https://cmse830sleepandhealth.streamlit.app
 
 To explore, visit the link and scroll through the diagrams and pages.
 
