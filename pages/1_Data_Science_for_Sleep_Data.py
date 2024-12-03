@@ -15,10 +15,10 @@ from sklearn.impute import IterativeImputer, SimpleImputer
 from sklearn.preprocessing import StandardScaler, RobustScaler
 
 
-st.set_page_config(page_title="Data Science: Sleep Data")
+st.set_page_config(page_title="Data Science for Sleep Data")
 
-st.markdown("# Data Science: Sleep Data")
-st.sidebar.header("Data Science: Sleep Data")
+st.markdown("# Data Science for Sleep Data")
+st.sidebar.header("Data Science for Sleep Data")
 st.write(
     """
     This dataset was found in kaggle here: https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset
