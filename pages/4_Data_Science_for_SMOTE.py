@@ -14,10 +14,10 @@ from sklearn.impute import IterativeImputer, SimpleImputer
 from sklearn.preprocessing import StandardScaler, RobustScaler
 
 
-st.set_page_config(page_title="Data Science: SMOTE")
+st.set_page_config(page_title="Data Science for SMOTE")
 
-st.markdown("# Data Science: SMOTE")
-st.sidebar.header("Data Science: SMOTE")
+st.markdown("# Data Science for SMOTE")
+st.sidebar.header("Data Science for SMOTE")
 st.write(
     """
     This page explores SMOTE on the second dataset (See the Health Data page)
