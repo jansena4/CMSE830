@@ -80,11 +80,11 @@ st.write("#### Variable Plots")
 
 option = st.selectbox(
     'Select a variable to explore:',
-    hss.columns
+    cmu.columns
 )
 st.write('You selected:', option)
 
-for col in hss.columns:
+for col in cmu.columns:
     if (col == option):# & (col not in ['Bedtime', 'Wake-up Time']):
         st.write(f"#### Interactive Histogram of {col}")
         hist_values = np.histogram(cmu[col], bins=len(set(cmu[col])))[0]
@@ -100,7 +100,7 @@ for col in hss.columns:
         st.write("Variable Comparison Plots")
         option_2 = st.selectbox(
             'Select a second variable to explore:',
-            set(hss.columns) - set(option)
+            set(cmu.columns) - set(option)
         )
         st.write('You selected:', option_2)
 
@@ -114,7 +114,7 @@ for col in hss.columns:
 
         option_col = st.selectbox(
             'Select another variable as the color for the plot:',
-            set(hss.columns) - set([option, option_2])
+            set(cmu.columns) - set([option, option_2])
         )
         st.write('You selected:', option_col)
         fig = px.scatter(cmu, x=col, y=option_2, color=option_col, title='Interactive Scatter Plot')
