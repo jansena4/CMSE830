@@ -106,11 +106,13 @@ if option == 'Sleep Data':
     hss.loc[hss['Gender']=='m', 'Gender'] = 1 #Setting male as 1
     
     st.write("#### Cleaned & Transformed Sleep Specific Data")
+    st.write("Below we have the new dataset with cleaned data. This data had several things done to it including turning the sleep disorder, medication usage, and gender features into binary features, as well as ranking low/medium/high activity levels and unhealthy/medium/healthy diets as -1/0/1 (creating ordinal features).")
     st.write(hss)
     
     ###Plots, etc.
     #Correlation heatmap
     st.write(f"#### Correlation Heatmap")
+    st.write(f"Below we have a correlation heatmap of all of the numerical features.")
     plt.figure(figsize=(8, 6))
     hss_encoded = pd.get_dummies(hss) # Turn all categorical variables into one-hot encoded dummy variables
     sns.heatmap(hss_encoded.corr(), cmap="plasma") #Plot a heatmap for the correlations between all variables (including dummy variables)
@@ -125,6 +127,7 @@ if option == 'Sleep Data':
         hss.columns
     )
     st.write('You selected:', option)
+    st.write(f"The first plot shown is the distribution of {option} from the data. This plot helps us to understand what the data looks like going into our analysis and model.")
     
     for col in hss.columns:
         if (col == option) & (col not in ['Bedtime', 'Wake-up Time']):
@@ -145,6 +148,7 @@ if option == 'Sleep Data':
                 set(hss.columns) - set([option, 'Bedtime', 'Wake-up Time'])
             )
             st.write('You selected:', option_2)
+            st.write(f"The next plot we examine is a plot of the relationship between {option} (on the x axis) and {option_2} (on the y axis). This helps us see correlations or non0linear relationships.)
     
             st.write(f"#### Plot of {col} vs {option_2}")
             plt.figure(figsize=(8, 6))
@@ -159,6 +163,7 @@ if option == 'Sleep Data':
                 set(hss.columns) - set([option, option_2, 'Bedtime', 'Wake-up Time'])
             )
             st.write('You selected:', option_col)
+            st.write(f"The last plot we'll examine is a plot of {option} vs {option_2} where the {option_col} feature is represented by the colors in the plot.")
             fig = px.scatter(hss, x=col, y=option_2, color=option_col, title='Interactive Scatter Plot')
             st.plotly_chart(fig)
     
@@ -220,12 +225,14 @@ if option == 'Health Data':
     shl.loc[shl['BMI Category']=='Obese', 'BMI Category'] = 2 #Setting obese bmi as 2
     
     st.write("#### Cleaned & Transformed Physical Activity Specific Data")
+    st.write("Below we have the new dataset with cleaned data. This data had several things done to it including turning the sleep disorder feature from a category of Sleep Apnea, Insomnia, or none into a binary feature for the presence of sleep disorders, and turning the four BMI categories into an ordinal feature.")
     st.write(shl)
     
     
     ###Plots, etc.
     #Correlation heatmap
     st.write(f"#### Correlation Heatmap")
+    st.write(f"Below we have a correlation heatmap of all of the numerical features.")
     plt.figure(figsize=(8, 6))
     shl_encoded = pd.get_dummies(shl) # Turn all categorical variables into one-hot encoded dummy variables
     sns.heatmap(shl_encoded.corr(), cmap="plasma") #Plot a heatmap for the correlations between all variables (including dummy variables)
@@ -252,6 +259,7 @@ if option == 'Health Data':
         shl.columns
     )
     st.write('You selected:', option)
+    st.write(f"The first plot shown is the distribution of {option} from the data. This plot helps us to understand what the data looks like going into our analysis and model.")
     
     for col in shl.columns:
         if (col == option) & (col not in ['Occupation', 'Blood Pressure']):
@@ -272,6 +280,7 @@ if option == 'Health Data':
                 set(shl.columns) - set([option, 'Occupation', 'Blood Pressure'])
             )
             st.write('You selected:', option_2)
+            st.write(f"The next plot we examine is a plot of the relationship between {option} (on the x axis) and {option_2} (on the y axis). This helps us see correlations or non0linear relationships.)
     
             st.write(f"#### Plot of {col} vs {option_2}")
             plt.figure(figsize=(8, 6))
@@ -286,6 +295,8 @@ if option == 'Health Data':
                 set(shl.columns) - set([option, option_2, 'Occupation', 'Blood Pressure'])
             )
             st.write('You selected:', option_col)
+            st.write(f"The last plot we'll examine is a plot of {option} vs {option_2} where the {option_col} feature is represented by the colors in the plot.")
+            
             fig = px.scatter(shl, x=col, y=option_2, color=option_col, title='Interactive Scatter Plot')
             st.plotly_chart(fig)
     
@@ -379,7 +390,12 @@ if option == 'SMOTE':
     
     # ensure the columns are in the same order as the original DataFrame
     shl_imp = shl_imp[shl_missing.columns]
-    
+
+    st.write(
+        """
+        The heatmap below shows the indices of the missing values in the dataset.
+        """
+    )
     sns.heatmap(shl_imp.isna().transpose(), cmap="plasma")
     plt.show()
     
@@ -403,7 +419,7 @@ if option == 'SMOTE':
     resampled_shl['Sleep Disorder'] = y_resampled
     
     
-    
+    st.write("Next we're going to explore the distribution of the data before and after we impute the missing values. The first plots look slightly different due to their categorical (rather than numerical) nature."
     # Bar chart for class distribution after SMOTE
     plt.figure(figsize=(10,5))
     plt.subplot(1,2,1)
@@ -448,29 +464,32 @@ if option == 'SMOTE':
     plt.legend()
     
     
+    
     plt.subplot(4,2,5)
-    sns.histplot(shl_imp[shl_imp['Sleep Disorder']==0]['Quality of Sleep'], color='blue', label='No Sleep Disorder', kde=True)
-    sns.histplot(shl_imp[shl_imp['Sleep Disorder']==1]['Quality of Sleep'], color='red', label='Sleep Disorder', kde=True)
-    plt.title('Sleep Quality Distribution Before SMOTE')
-    plt.legend()
-    
-    plt.subplot(4,2,6)
-    sns.histplot(resampled_shl[resampled_shl['Sleep Disorder']==0]['Quality of Sleep'], color='blue', label='No Sleep Disorder', kde=True)
-    sns.histplot(resampled_shl[resampled_shl['Sleep Disorder']==1]['Quality of Sleep'], color='red', label='Sleep Disorder', kde=True)
-    plt.title('Sleep Quality Distribution After SMOTE')
-    plt.legend()
-    
-    
-    plt.subplot(4,2,7)
     sns.histplot(shl_imp[shl_imp['Sleep Disorder']==0]['Daily Steps'], color='blue', label='No Sleep Disorder', kde=True)
     sns.histplot(shl_imp[shl_imp['Sleep Disorder']==1]['Daily Steps'], color='red', label='Sleep Disorder', kde=True)
     plt.title('Daily Steps Distribution Before SMOTE')
     plt.legend()
     
-    plt.subplot(4,2,8)
+    plt.subplot(4,2,6)
     sns.histplot(resampled_shl[resampled_shl['Sleep Disorder']==0]['Daily Steps'], color='blue', label='No Sleep Disorder', kde=True)
     sns.histplot(resampled_shl[resampled_shl['Sleep Disorder']==1]['Daily Steps'], color='red', label='Sleep Disorder', kde=True)
     plt.title('Daily Steps Distribution After SMOTE')
+    plt.legend()
+
+
+    st.write("The last plots we look at will be our target variable, sleep quality.")
+
+    plt.subplot(4,2,7)
+    sns.histplot(shl_imp[shl_imp['Sleep Disorder']==0]['Quality of Sleep'], color='blue', label='No Sleep Disorder', kde=True)
+    sns.histplot(shl_imp[shl_imp['Sleep Disorder']==1]['Quality of Sleep'], color='red', label='Sleep Disorder', kde=True)
+    plt.title('Sleep Quality Distribution Before SMOTE')
+    plt.legend()
+    
+    plt.subplot(4,2,8)
+    sns.histplot(resampled_shl[resampled_shl['Sleep Disorder']==0]['Quality of Sleep'], color='blue', label='No Sleep Disorder', kde=True)
+    sns.histplot(resampled_shl[resampled_shl['Sleep Disorder']==1]['Quality of Sleep'], color='red', label='Sleep Disorder', kde=True)
+    plt.title('Sleep Quality Distribution After SMOTE')
     plt.legend()
     
     
@@ -478,6 +497,7 @@ if option == 'SMOTE':
     st.pyplot(plt)
 
 
+    st.write("From these plots we can tell whether the imputations are maintaing the original ditributions of the variables or not.")
 
 
 
