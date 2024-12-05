@@ -34,7 +34,8 @@ st.write("# Sleep, Health, and Physical Activity")
 
 option = st.selectbox(
     'Please select a page:',
-    ['Welcome', 'Sleep Data', 'Health Data', 'College Sleep Data', 'SMOTE', 'Modeling']#, 'PIY (Predict It Yourself!)']
+    # ['Welcome', 'Sleep Data', 'Health Data', 'College Sleep Data', 'SMOTE', 'Modeling']#, 'PIY (Predict It Yourself!)']
+    ['Welcome', 'Sleep Data', 'Health Data', 'SMOTE', 'Modeling']#, 'PIY (Predict It Yourself!)']
 )
 
 # st.write('Now viewing:', option)
@@ -324,8 +325,8 @@ if option == 'Health Data':
 
 
 
-if option == 'College Sleep Data':
-    st.write("## College Sleep Data")
+# if option == 'College Sleep Data':
+#     st.write("## College Sleep Data")
 
 
 
