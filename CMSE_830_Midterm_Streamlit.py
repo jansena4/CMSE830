@@ -552,7 +552,8 @@ if option == 'Modeling':
 
     
     st.write("## Modeling")
-
+    
+    #Linear Regression
     st.write("The first model we will exmaine is a linear regression model. We're going to narrow in on Age, Gender, Sleep Disorders, & Medication Usage from the sleep data to focus our analysis on the variables we're most interested in.")    
     # X = hss[~'Sleep Quality']
     y = hss['Sleep Quality']
@@ -561,6 +562,17 @@ if option == 'Modeling':
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
+    
+    y_train_class = y_train.copy()
+    y_train_class[y_train >= 20] = 1
+    y_train_class[y_train < 20] = 0
+    
+    y_test_class = y_test.copy()
+    y_test_class[y_test >= 20] = 1
+    y_test_class[y_test < 20] = 0
+    
+
+    
     lin_reg = LinearRegression()
     lin_reg.fit(X_train, y_train)
     
@@ -588,13 +600,34 @@ if option == 'Modeling':
     plt.show()
 
 
+    #KNN
+    knn = KNeighborsClassifier()
+
+    knn.fit(X_train, y_train_class)
+    
+    y_pred_knn = knn.predict(X_test)
+    st.write("Accuracy:", accuracy_score(y_test_class, y_pred_knn))
+    st.write("Confusion Matrix:\n", confusion_matrix(y_test_class, y_pred_knn))
+    st.write("Classification Report:\n", classification_report(y_test_class, y_pred_knn))
+
+
+
+    
+    #Random Forest
+    rf = RandomForestClassifier(random_state=0, **best_params)
+    rf.fit(X_train, y_train_class)
+    
+    y_pred_randfor = rf.predict(X_test)
+    st.write("Accuracy:", accuracy_score(y_test_class, y_pred_randfor))
+    st.write("Confusion Matrix:\n", confusion_matrix(y_test_class, y_pred_randfor))
+    st.write("Classification Report:\n", classification_report(y_test_class, y_pred_randfor))
+
 
 
 
 
 
     
-    st.write('#### Please Select values below')
     model_to_use = st.selectbox('Predict with model:', ['Linear Regression', 'KNN', 'Random Forest'])
 
     # x_vals = {}
