@@ -525,9 +525,9 @@ if option == 'Modeling':
 
     st.write("## Modeling")
 
-    st.write("The first model we will exmaine is a linear regression model.")
-    X = hss[~'Sleep Quality']
+    st.write("The first model we will exmaine is a linear regression model.")    
     y = hss['Sleep Quality']
+    X = hss.drop(columns=['Sleep Quality'])
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
