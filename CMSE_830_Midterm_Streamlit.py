@@ -583,7 +583,7 @@ if option == 'PIY (Predict It Yourself!)':
         sleep_dis_val = 0
     # gender = 
 
-    sleep_qual =  age/10 - gender - sleep_dis
+    sleep_qual =  age/10 - gender_val - sleep_dis_val
 
     st.write(f'We predict you will have a {sleep_qual}/10 sleep!')
     
