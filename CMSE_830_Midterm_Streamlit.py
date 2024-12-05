@@ -9,23 +9,21 @@ st.set_page_config(
     page_icon="👋",
 )
 
-st.write("# Welcome to the future of sleep and health! 👋")
+st.write("# Welcome to the CMSE 830 Midterm Project! 👋")
 
 st.sidebar.success("Please select a page above")
 
 st.write("""
-    Today we're exploring the relationships between physical activity levels, general health measures, and sleep patterns.
+    This project hopes to explore the relationships between physical activity levels, general health measures, and sleep patterns.
 
-    There are several categories of activity, health and sleep to explore:
-    - Teenagers: Have the stereotype of going to be at later times and not getting enough sleep while also being more stressed on average. We will explore whether these later hours and stress levels affect their quality of sleep.
-    - "Gym Bros": People who tend to go to the gym more often. We will discuss how higher than average activity levels might impact sleep quality.
-    - Insomniacs: People who struggle with sleep due to a sleep disorder. We will look into the correlation between sleep duration, time fallen asleep, time woken up, and the presence of a sleep disorder as well as the impact on the quality of sleep.
+    There are several ideas for what to check:
+    - The relationship between ages, their bedtime and wake-up time, and the overall sleep quality. This would be interesting to explore the stereotype that teenagers and young adults go to bed later than adults and therefore get worse sleep.
+    - The relationships between physical activity levels, sleep, and overall health. Potentially comparing measures of general health against physical activity measure and sleep duration/quality to determine which measure is more predictive of health levels.
+    - General trends among these factors (age, gender, bmi level, etc.) and activity level. This would be an interesting way to see whetehr the stereotype of "gym bros" working out more/being healthier than the general population seems to be true.
 
 
-    To the left you will see several tabs to explore.
-    
 
-    The GitHub repository for the data and code behind this exploration can be found here: https://github.com/jansena4/CMSE830
+    The GitHub repository for this project can be found here: https://github.com/jansena4/CMSE830
     """)
 
 
