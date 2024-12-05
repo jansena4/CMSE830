@@ -9,19 +9,19 @@ st.set_page_config(
     page_icon="👋",
 )
 
+st.write("# Sleep, Health, and Physical Activity")
 
 option = st.selectbox(
     'Please select a page:',
     ['Welcome', 'Sleep Data', 'Health Data', 'College Sleep Data', 'SMOTE', 'Modeling', 'PIY (Predict It Yourself!)']
 )
 
-# Display the selected option
-st.write('Now viewing:', option)
+# st.write('Now viewing:', option)
 
 if option == 'Welcome':
 
 
-    st.write("# Welcome to the future of sleep and health! 👋")
+    st.write("## Welcome to the future of sleep and health! 👋")
     
     # st.sidebar.success("Please select a page above") #wouldn't work (not allowed to cry about this though)
     
@@ -166,7 +166,7 @@ if option == 'Sleep Data':
 
 if option == 'Health Data':
 
-    st.write("# Health Data")
+    st.write("## Health Data")
 
 
 
@@ -184,7 +184,7 @@ if option == 'Health Data':
 
 
 if option == 'College Sleep Data':
-    st.write("# College Sleep Data")
+    st.write("## College Sleep Data")
 
 
 
@@ -202,7 +202,7 @@ if option == 'College Sleep Data':
 
 if option == 'SMOTE':
 
-    st.write("# page 4")
+    st.write("## SMOTE")
 
 
 
@@ -221,7 +221,7 @@ if option == 'SMOTE':
 
 if option == 'Modeling':
 
-    st.write("# Modeling")
+    st.write("## Modeling")
 
 
 
