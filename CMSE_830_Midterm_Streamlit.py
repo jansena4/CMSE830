@@ -419,7 +419,7 @@ if option == 'SMOTE':
     resampled_shl['Sleep Disorder'] = y_resampled
     
     
-    st.write("Next we're going to explore the distribution of the data before and after we impute the missing values. The first plots look slightly different due to their categorical (rather than numerical) nature."
+    st.write("Next we're going to explore the distribution of the data before and after we impute the missing values. The first plots look slightly different due to their categorical (rather than numerical) nature.")
     # Bar chart for class distribution after SMOTE
     plt.figure(figsize=(10,5))
     plt.subplot(1,2,1)
