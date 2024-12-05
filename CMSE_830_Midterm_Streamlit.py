@@ -642,7 +642,7 @@ if option == 'Modeling':
     # if model_to_use == 'Random Forest':
     #     sleep_qual = ran_for.predict(X_vals)
         
-    sleep_qual =  x_vals['Age']/10 - x_vals['Gender'] - x_vals['Sleep Disorders'] -  x_vals['Medication Usage']
+    # sleep_qual =  x_vals['Age']/10 - x_vals['Gender'] - x_vals['Sleep Disorders'] -  x_vals['Medication Usage']
 
     st.write(f'We predict you will have a {sleep_qual}/10 sleep!')
     
