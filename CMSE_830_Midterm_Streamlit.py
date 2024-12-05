@@ -644,7 +644,7 @@ if option == 'Modeling':
         
     # sleep_qual =  x_vals['Age']/10 - x_vals['Gender'] - x_vals['Sleep Disorders'] -  x_vals['Medication Usage']
 
-    st.write(f'We predict you will have a {sleep_qual[0]}/10 sleep!')
+    st.write(f'We predict you will have a {np.round(sleep_qual[0],1)}/10 sleep!')
     
 
 
