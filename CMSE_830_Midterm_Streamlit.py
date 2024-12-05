@@ -13,11 +13,16 @@ from imblearn.over_sampling import SMOTE
 import plotly.express as px
 
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression # this could be any ML method
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer, SimpleImputer
 from sklearn.preprocessing import StandardScaler, RobustScaler
+
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 
 st.set_page_config(
@@ -520,13 +525,36 @@ if option == 'Modeling':
 
     st.write("## Modeling")
 
+    st.write("The first model we will exmaine is a linear regression model.")
+    X = hss[~'Sleep Quality']
+    y = hss['Sleep Quality']
 
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
-
-
-
-
-
+    lin_reg = LinearRegression()
+    lin_reg.fit(X_train, y_train)
+    
+    y_pred_linreg = lin_reg.predict(X_test)
+    
+    st.write("Intercept:", lin_reg.intercept_)
+    st.write("Slope:", lin_reg.coef_)
+    
+    mse = mean_squared_error(y_test, y_pred_linreg)
+    r2 = r2_score(y_test, y_pred_linreg)
+    st.write("Mean Squared Error:", mse)
+    st.write("R^2 Score:", r2)
+    
+    plt.figure(figsize=(8, 6))
+    plt.scatter(y_test, y_pred_linreg, color='blue')
+    
+    plot_line = np.linspace(int(np.min([np.min(y_test), np.min(y_pred_linreg)])),
+                           int(np.max([np.max(y_test), np.max(y_pred_linreg)])))
+    plt.plot(plot_line, plot_line, color = 'red')
+    plt.xlabel("True y")
+    plt.ylabel("Predicted y")
+    plt.title("Linear Regression")
+    plt.grid(True)
+    plt.show()
 
 
 
@@ -536,11 +564,29 @@ if option == 'Modeling':
 
 
 if option == 'PIY (Predict It Yourself!)':
+    st.write('#### Please Select values below')
+    
+    age = st.slider('Select age:', 0, 100, 25)
+    gender = st.selectbox('Select Gender', ['Male', 'Female'])
+    sleep_dis = st.selectbox('Select Sleep Disorder', ['Yes', 'No'])
 
-    st.write("# Modeling")
+    if gender == 'Male':
+        gender_val = 1
 
+    if gender == 'Female':
+        gender_val = 0
+        
+    if sleep_dis == 'Yes':
+        sleep_dis_val = 1
 
+    if sleep_dis == 'No':
+        sleep_dis_val = 0
+    # gender = 
 
+    sleep_qual =  age/10 - gender - sleep_dis
+
+    st.write(f'We predict you will have a {sleep_qual}/10 sleep!')
+    
 
 
 
