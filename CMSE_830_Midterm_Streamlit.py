@@ -1,7 +1,23 @@
-import streamlit as st
+# import streamlit as st
+# import pandas as pd
+# import numpy as np
+# import matplotlib.pyplot as plt
+
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
+import streamlit as st
+from imblearn.over_sampling import SMOTE
+import plotly.express as px
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression # this could be any ML method
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer, SimpleImputer
+from sklearn.preprocessing import StandardScaler, RobustScaler
 
 
 st.set_page_config(
