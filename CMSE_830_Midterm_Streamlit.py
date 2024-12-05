@@ -523,11 +523,39 @@ if option == 'SMOTE':
 
 if option == 'Modeling':
 
+    #Loading the data
+    hss_url = 'https://raw.githubusercontent.com/jansena4/CMSE830/refs/heads/main/Health_Sleep_Statistics.csv'
+    hss = pd.read_csv(hss_url)
+    
+    hss = hss.drop(columns=['User ID'])
+    
+    hss.loc[hss['Physical Activity Level']=='low', 'Physical Activity Level'] = -1 #Setting low physical activity level as -1
+    hss.loc[hss['Physical Activity Level']=='medium', 'Physical Activity Level'] = 0 #Setting medium physical activity level as 0
+    hss.loc[hss['Physical Activity Level']=='high', 'Physical Activity Level'] = 1 #Setting high physical activity level as 1
+    
+    hss.loc[hss['Dietary Habits']=='unhealthy', 'Dietary Habits'] = -1 #Setting unhealthy dietary habits as -1
+    hss.loc[hss['Dietary Habits']=='medium', 'Dietary Habits'] = 0 #Setting unhealthy dietary habits as 0
+    hss.loc[hss['Dietary Habits']=='healthy', 'Dietary Habits'] = 1 #Setting healthy dietary habits as 1
+    
+    hss.loc[hss['Sleep Disorders']=='no', 'Sleep Disorders'] = 0 #Setting no sleep disorder as 0
+    hss.loc[hss['Sleep Disorders']=='yes', 'Sleep Disorders'] = 1 #Setting yes sleep disorder as 1
+    
+    hss.loc[hss['Medication Usage']=='no', 'Medication Usage'] = 0 #Setting no medication usage as 0
+    hss.loc[hss['Medication Usage']=='yes', 'Medication Usage'] = 1 #Setting yes medication usage as 1
+    
+    hss.loc[hss['Gender']=='f', 'Gender'] = 0 #Setting female as 0
+    hss.loc[hss['Gender']=='m', 'Gender'] = 1 #Setting male as 1
+
+
+
+
+    
     st.write("## Modeling")
 
     st.write("The first model we will exmaine is a linear regression model.")    
+    X = hss[~'Sleep Quality']
     y = hss['Sleep Quality']
-    X = hss.drop(columns=['Sleep Quality'])
+    # X = hss.drop(columns=['Sleep Quality'])
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
@@ -562,28 +590,51 @@ if option == 'Modeling':
 
 
 
-
-if option == 'PIY (Predict It Yourself!)':
-    st.write('#### Please Select values below')
     
-    age = st.slider('Select age:', 0, 100, 25)
-    gender = st.selectbox('Select Gender', ['Male', 'Female'])
-    sleep_dis = st.selectbox('Select Sleep Disorder', ['Yes', 'No'])
+    st.write('#### Please Select values below')
+    model_to_use = st.selectbox('Predict with model:', ['Linear Regression', 'KNN', 'Random Forest'])
 
+    x_vals = {}
+    x_vals['Age'] = st.slider('Select age:', 0, 100, 25)
+    gender = st.selectbox('Select Gender:', ['Male', 'Female'])
+    sleep_dis = st.selectbox('Select Sleep Disorder:', ['Yes', 'No'])
+    med_use = st.selectbox('Select Medication Usage:', ['Yes', 'No'])
+
+    # ['Age', 'Gender', 'Sleep Disorders', 'Medication Usage']
     if gender == 'Male':
-        gender_val = 1
+        x_vals['Gender'] = 1
 
     if gender == 'Female':
-        gender_val = 0
-        
+        x_vals['Gender'] = 0
+
+    
     if sleep_dis == 'Yes':
-        sleep_dis_val = 1
+        x_vals['Sleep Disorders'] = 1
 
     if sleep_dis == 'No':
-        sleep_dis_val = 0
-    # gender = 
+        x_vals['Sleep Disorders'] = 0
 
-    sleep_qual =  age/10 - gender_val - sleep_dis_val
+    
+    if med_use == 'Yes':
+        x_vals['Medication Usage'] = 1
+
+    if med_use == 'No':
+        x_vals['Medication Usage'] = 0
+
+    
+
+    X_vals = pd.DataFrame(x_vals)
+    
+    if model_to_use == 'Linear Regression':
+        sleep_qual = lin_reg.predict(X_vals)
+    
+    # if model_to_use == 'KNN':
+    #     sleep_qual = knn.predict(X_vals)
+    
+    # if model_to_use == 'Random Forest':
+    #     sleep_qual = ran_for.predict(X_vals)
+        
+    sleep_qual =  x_vals['Age']/10 - x_vals['Gender'] - x_vals['Sleep Disorders'] -  x_vals['Medication Usage']
 
     st.write(f'We predict you will have a {sleep_qual}/10 sleep!')
     
