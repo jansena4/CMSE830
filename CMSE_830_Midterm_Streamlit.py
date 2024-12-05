@@ -34,7 +34,7 @@ st.write("# Sleep, Health, and Physical Activity")
 
 option = st.selectbox(
     'Please select a page:',
-    ['Welcome', 'Sleep Data', 'Health Data', 'College Sleep Data', 'SMOTE', 'Modeling', 'PIY (Predict It Yourself!)']
+    ['Welcome', 'Sleep Data', 'Health Data', 'College Sleep Data', 'SMOTE', 'Modeling']#, 'PIY (Predict It Yourself!)']
 )
 
 # st.write('Now viewing:', option)
@@ -553,9 +553,9 @@ if option == 'Modeling':
     st.write("## Modeling")
 
     st.write("The first model we will exmaine is a linear regression model.")    
-    X = hss[~'Sleep Quality']
+    # X = hss[~'Sleep Quality']
     y = hss['Sleep Quality']
-    # X = hss.drop(columns=['Sleep Quality'])
+    X = hss.drop(columns=['Sleep Quality'])
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
