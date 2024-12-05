@@ -35,7 +35,7 @@ st.write("# Sleep, Health, and Physical Activity")
 option = st.selectbox(
     'Please select a page:',
     # ['Welcome', 'Sleep Data', 'Health Data', 'College Sleep Data', 'SMOTE', 'Modeling']#, 'PIY (Predict It Yourself!)']
-    ['Welcome', 'Sleep Data', 'Health Data', 'SMOTE', 'Modeling']#, 'PIY (Predict It Yourself!)']
+    ['Welcome', 'Sleep Data', 'Health Data', 'SMOTE', 'Modeling & Predictions']#, 'PIY (Predict It Yourself!)']
 )
 
 # st.write('Now viewing:', option)
@@ -48,6 +48,13 @@ if option == 'Welcome':
     # st.sidebar.success("Please select a page above") #wouldn't work (not allowed to cry about this though)
     
     st.write("""
+
+        Have you ever slept? Do you do eat food? Have you ever participated in any physical activity? 
+
+        Well today we're going to dive into how well you sleep based on several different factors to determine how well you might sleep tonight! Later we'll discuss how varying groups of people might sleep according to these results.
+
+
+        
         This analysis hopes to explore the relationships between physical activity levels, general health measures, and sleep patterns.
     
         There are several ideas for what to check:
@@ -522,7 +529,7 @@ if option == 'SMOTE':
 
 
 
-if option == 'Modeling':
+if option == 'Modeling & Predictions':
 
     #Loading the data
     hss_url = 'https://raw.githubusercontent.com/jansena4/CMSE830/refs/heads/main/Health_Sleep_Statistics.csv'
@@ -551,7 +558,7 @@ if option == 'Modeling':
 
 
     
-    st.write("## Modeling")
+    st.write("## Modeling & Predictions")
     
     # X = hss[~'Sleep Quality']
     y = hss['Sleep Quality']
@@ -618,7 +625,7 @@ if option == 'Modeling':
     
     #Random Forest
     st.write("#### Random Forest Model")
-    st.write("The third model we will exmaine is a knn model. This will help us see which features are the most decisive on average.") 
+    st.write("The third model we will exmaine is a random forest model. This will help us see which features are the most decisive on average.") 
     rf = RandomForestClassifier(random_state=0)
     rf.fit(X_train, y_train_class)
     
