@@ -631,7 +631,7 @@ if option == 'Modeling':
 
     
     
-    X_vals = pd.DataFrame([age, gender_val, sleepdis_val, meduse_val], columns=x_cols)
+    X_vals = pd.DataFrame([[age, gender_val, sleepdis_val, meduse_val]], columns=x_cols)
     
     if model_to_use == 'Linear Regression':
         sleep_qual = lin_reg.predict(X_vals)
