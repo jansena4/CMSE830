@@ -552,10 +552,10 @@ if option == 'Modeling':
     
     st.write("## Modeling")
 
-    st.write("The first model we will exmaine is a linear regression model.")    
+    st.write("The first model we will exmaine is a linear regression model. We're going to narrow in on Age, Gender, Sleep Disorders, & Medication Usage from the sleep data to focus our analysis on the variables we're most interested in.")    
     # X = hss[~'Sleep Quality']
     y = hss['Sleep Quality']
-    X = hss.drop(columns=['Sleep Quality'])
+    X = hss[['Age', 'Gender', 'Sleep Disorders', 'Medication Usage']]
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
@@ -600,7 +600,7 @@ if option == 'Modeling':
     sleep_dis = st.selectbox('Select Sleep Disorder:', ['Yes', 'No'])
     med_use = st.selectbox('Select Medication Usage:', ['Yes', 'No'])
 
-    # ['Age', 'Gender', 'Sleep Disorders', 'Medication Usage']
+    
     if gender == 'Male':
         x_vals['Gender'] = 1
 
