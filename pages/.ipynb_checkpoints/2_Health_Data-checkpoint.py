@@ -15,8 +15,7 @@ from sklearn.impute import IterativeImputer, SimpleImputer
 from sklearn.preprocessing import StandardScaler, RobustScaler
 
 
-st.set_page_config(page_title="Health Data",
-                    page_icon="👋")
+st.set_page_config(page_title="Health Data")
 
 st.markdown("# Health Data")
 st.sidebar.header("Health Data")

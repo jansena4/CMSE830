@@ -14,8 +14,7 @@ from sklearn.impute import IterativeImputer, SimpleImputer
 from sklearn.preprocessing import StandardScaler, RobustScaler
 
 
-st.set_page_config(page_title="SMOTE",
-                    page_icon="👋")
+st.set_page_config(page_title="SMOTE")
 
 st.markdown("# SMOTE")
 st.sidebar.header("SMOTE")

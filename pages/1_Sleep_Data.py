@@ -15,7 +15,8 @@ from sklearn.impute import IterativeImputer, SimpleImputer
 from sklearn.preprocessing import StandardScaler, RobustScaler
 
 
-st.set_page_config(page_title="Sleep Data")
+st.set_page_config(page_title="Sleep Data",
+                    page_icon="👋")
 
 st.markdown("# Sleep Data")
 st.sidebar.header("Sleep Data")

@@ -9,12 +9,12 @@ st.set_page_config(
     page_icon="👋",
 )
 
-st.write("# Welcome to the future of sleep and health! 👋")
+st.write("# Welcome to the CMSE 830 Midterm Project! 👋")
 
 st.sidebar.success("Please select a page above")
 
 st.write("""
-    This analysis hopes to explore the relationships between physical activity levels, general health measures, and sleep patterns.
+    This project hopes to explore the relationships between physical activity levels, general health measures, and sleep patterns.
 
     There are several ideas for what to check:
     - The relationship between ages, their bedtime and wake-up time, and the overall sleep quality. This would be interesting to explore the stereotype that teenagers and young adults go to bed later than adults and therefore get worse sleep.
@@ -22,11 +22,8 @@ st.write("""
     - General trends among these factors (age, gender, bmi level, etc.) and activity level. This would be an interesting way to see whetehr the stereotype of "gym bros" working out more/being healthier than the general population seems to be true.
 
 
-    Please see the tabs to the left to explore each dataset
 
-
-
-    The GitHub repository for this analysis can be found here: https://github.com/jansena4/CMSE830
+    The GitHub repository for this project can be found here: https://github.com/jansena4/CMSE830
     """)
 
 
