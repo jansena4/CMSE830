@@ -596,36 +596,42 @@ if option == 'Modeling':
     st.write('#### Please Select values below')
     model_to_use = st.selectbox('Predict with model:', ['Linear Regression', 'KNN', 'Random Forest'])
 
-    x_vals = {}
-    x_vals['Age'] = st.slider('Select age:', 0, 100, 25)
+    # x_vals = {}
+    age = st.slider('Select age:', 0, 100, 25)
     gender = st.selectbox('Select Gender:', ['Male', 'Female'])
     sleep_dis = st.selectbox('Select Sleep Disorder:', ['Yes', 'No'])
     med_use = st.selectbox('Select Medication Usage:', ['Yes', 'No'])
 
     
     if gender == 'Male':
-        x_vals['Gender'] = 1
+        # x_vals['Gender'] = 1
+        gender_val = 1
 
     if gender == 'Female':
-        x_vals['Gender'] = 0
+        # x_vals['Gender'] = 0
+        gender_val = 0
 
     
     if sleep_dis == 'Yes':
-        x_vals['Sleep Disorders'] = 1
+        # x_vals['Sleep Disorders'] = 1
+        sleepdis_val = 1
 
     if sleep_dis == 'No':
-        x_vals['Sleep Disorders'] = 0
+        # x_vals['Sleep Disorders'] = 0
+        sleepdis_val = 0
 
     
     if med_use == 'Yes':
-        x_vals['Medication Usage'] = 1
+        # x_vals['Medication Usage'] = 1
+        meduse_val = 1
 
     if med_use == 'No':
-        x_vals['Medication Usage'] = 0
+        # x_vals['Medication Usage'] = 0
+        meduse_val = 0
 
     
-
-    X_vals = pd.DataFrame(x_vals, columns=x_cols)
+    
+    X_vals = pd.DataFrame([age, gender_val, sleepdis_val, meduse_val], columns=x_cols)
     
     if model_to_use == 'Linear Regression':
         sleep_qual = lin_reg.predict(X_vals)
