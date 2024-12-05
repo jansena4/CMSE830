@@ -639,7 +639,12 @@ if option == 'Modeling & Predictions':
 
 
 
-    
+    st.write("### Make your own predictions!")
+    st.write("""Don't know where to start? Try one of these:
+            \n Gym bro: Age=30, Gender=Male, Sleep Disorder=No, Medication Usage=No
+            \n College Student: Age=20, Gender=Female, Sleep Disorder=Yes, Medication Usage=No
+            \n Grandma: Age=60, Gender=Female, Sleep Disorder=No, Medication Usage=Yes
+            """)
     model_to_use = st.selectbox('Predict with model:', ['Linear Regression', 'KNN', 'Random Forest'])
 
     # x_vals = {}
