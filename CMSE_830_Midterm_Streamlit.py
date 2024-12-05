@@ -625,7 +625,7 @@ if option == 'Modeling':
 
     
 
-    X_vals = pd.DataFrame(x_vals)
+    X_vals = pd.DataFrame(x_vals, columns=x_cols)
     
     if model_to_use == 'Linear Regression':
         sleep_qual = lin_reg.predict(X_vals)
