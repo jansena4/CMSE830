@@ -148,7 +148,7 @@ if option == 'Sleep Data':
                 set(hss.columns) - set([option, 'Bedtime', 'Wake-up Time'])
             )
             st.write('You selected:', option_2)
-            st.write(f"The next plot we examine is a plot of the relationship between {option} (on the x axis) and {option_2} (on the y axis). This helps us see correlations or non0linear relationships.)
+            st.write(f"The next plot we examine is a plot of the relationship between {option} (on the x axis) and {option_2} (on the y axis). This helps us see correlations or non0linear relationships.")
     
             st.write(f"#### Plot of {col} vs {option_2}")
             plt.figure(figsize=(8, 6))
@@ -280,7 +280,7 @@ if option == 'Health Data':
                 set(shl.columns) - set([option, 'Occupation', 'Blood Pressure'])
             )
             st.write('You selected:', option_2)
-            st.write(f"The next plot we examine is a plot of the relationship between {option} (on the x axis) and {option_2} (on the y axis). This helps us see correlations or non0linear relationships.)
+            st.write(f"The next plot we examine is a plot of the relationship between {option} (on the x axis) and {option_2} (on the y axis). This helps us see correlations or non0linear relationships.")
     
             st.write(f"#### Plot of {col} vs {option_2}")
             plt.figure(figsize=(8, 6))
