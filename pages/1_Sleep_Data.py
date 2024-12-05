@@ -39,8 +39,8 @@ st.write(hss)
 
 
 
-###Data Cleaning
-#Converting variable types
+# ##Data Cleaning
+# Converting variable types
 # hss['Bedtime'] = pd.to_datetime(hss['Bedtime'], format='%H:%M')#.dt.time #Converting bedtimes to datetimes
 # hss['Wake-up Time'] = pd.to_datetime(hss['Wake-up Time'], format='%H:%M')#.dt.time #Converting wake-up times to datetimes
 
