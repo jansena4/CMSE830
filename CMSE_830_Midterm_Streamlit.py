@@ -553,8 +553,6 @@ if option == 'Modeling':
     
     st.write("## Modeling")
     
-    #Linear Regression
-    st.write("The first model we will exmaine is a linear regression model. We're going to narrow in on Age, Gender, Sleep Disorders, & Medication Usage from the sleep data to focus our analysis on the variables we're most interested in.")    
     # X = hss[~'Sleep Quality']
     y = hss['Sleep Quality']
     x_cols = ['Age', 'Gender', 'Sleep Disorders', 'Medication Usage']
@@ -573,6 +571,9 @@ if option == 'Modeling':
     
 
     
+    #Linear Regression  
+    st.write("#### Linear Regression Model")
+    st.write("The first model we will exmaine is a linear regression model. We're going to narrow in on Age, Gender, Sleep Disorders, & Medication Usage from the sleep data to focus our analysis on the variables we're most interested in. This will help us see which inputs have the most affect, as well as what that effect is, in our analysis.")  
     lin_reg = LinearRegression()
     lin_reg.fit(X_train, y_train)
     
@@ -601,6 +602,8 @@ if option == 'Modeling':
 
 
     #KNN
+    st.write("#### KNN Model")
+    st.write("The second model we will exmaine is a knn model. This will help us understand trends amoung similar input values.")  
     knn = KNeighborsClassifier()
 
     knn.fit(X_train, y_train_class)
@@ -614,7 +617,9 @@ if option == 'Modeling':
 
     
     #Random Forest
-    rf = RandomForestClassifier(random_state=0, **best_params)
+    st.write("#### Random Forest Model")
+    st.write("The third model we will exmaine is a knn model. This will help us see which features are the most decisive on average.") 
+    rf = RandomForestClassifier(random_state=0)
     rf.fit(X_train, y_train_class)
     
     y_pred_randfor = rf.predict(X_test)
@@ -670,11 +675,11 @@ if option == 'Modeling':
     if model_to_use == 'Linear Regression':
         sleep_qual = lin_reg.predict(X_vals)
     
-    # if model_to_use == 'KNN':
-    #     sleep_qual = knn.predict(X_vals)
+    if model_to_use == 'KNN':
+        sleep_qual = knn.predict(X_vals)
     
-    # if model_to_use == 'Random Forest':
-    #     sleep_qual = ran_for.predict(X_vals)
+    if model_to_use == 'Random Forest':
+        sleep_qual = rf.predict(X_vals)
         
     # sleep_qual =  x_vals['Age']/10 - x_vals['Gender'] - x_vals['Sleep Disorders'] -  x_vals['Medication Usage']
 
