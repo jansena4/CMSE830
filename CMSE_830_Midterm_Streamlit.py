@@ -555,7 +555,8 @@ if option == 'Modeling':
     st.write("The first model we will exmaine is a linear regression model. We're going to narrow in on Age, Gender, Sleep Disorders, & Medication Usage from the sleep data to focus our analysis on the variables we're most interested in.")    
     # X = hss[~'Sleep Quality']
     y = hss['Sleep Quality']
-    X = hss[['Age', 'Gender', 'Sleep Disorders', 'Medication Usage']]
+    x_cols = ['Age', 'Gender', 'Sleep Disorders', 'Medication Usage']
+    X = hss[x_cols]
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
@@ -565,7 +566,8 @@ if option == 'Modeling':
     y_pred_linreg = lin_reg.predict(X_test)
     
     st.write("Intercept:", lin_reg.intercept_)
-    st.write("Slope:", lin_reg.coef_)
+    for i in range(5):
+        st.write(f"{x_cols[i]} Coefficient:", lin_reg.coef_[i])
     
     mse = mean_squared_error(y_test, y_pred_linreg)
     r2 = r2_score(y_test, y_pred_linreg)
