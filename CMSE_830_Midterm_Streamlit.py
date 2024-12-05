@@ -566,7 +566,7 @@ if option == 'Modeling':
     y_pred_linreg = lin_reg.predict(X_test)
     
     st.write("Intercept:", lin_reg.intercept_)
-    for i in range(len(x_cols):
+    for i in range(len(x_cols)):
         st.write(f"{x_cols[i]} Coefficient:", lin_reg.coef_[i])
     
     mse = mean_squared_error(y_test, y_pred_linreg)
